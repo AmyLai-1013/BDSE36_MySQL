@@ -51,5 +51,32 @@ from full_passengers
 group by embarked 
 order by 登船點佔百分比 desc limit 3;
 
-# 9.
+# QUESTION 1
+select firstName, lastName, city, state
+from Person
+left join Address
+on Person.personid = Address.personid;
+
+# QUESTION 2
+select class
+from Courses
+group by class
+having count(class) >= 5;
+
+# QUESTION 3
+select a.num ConsecutiveNums
+from a
+join b
+on a.id = b.id-1 and a.num = b.num
+join c
+on b.id = c.id-1 and b.num = c.num;
+
+# QUESTION 4
+select min(sale_id) from sales group by product_id;
+
+select prodcut_id, year first_year, quantity, price
+from sales 
+where (select min(year) from sales group by product_id);
+
+
  
